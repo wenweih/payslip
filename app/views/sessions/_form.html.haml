@@ -1,0 +1,21 @@
+.ui.middle.aligned.center.aligned.grid
+  .column
+    %h2.ui.teal.image.header
+      %i.payment.icon
+      .content
+        Log-in
+    = form_for :session, url: session_path, html: {class:'ui large form user_login'} do |form|
+      .ui.stacked.segment
+        .field
+          .ui.left.icon.input
+            %i.user.icon
+            = form.text_field :email, type: 'email'
+        .field
+          .ui.left.icon.input
+            %i.lock.icon
+            = form.password_field :password
+        = form.submit "Login", class:'ui fluid large teal submit button'
+      .other-links
+        - if Clearance.configuration.allow_sign_up?
+          = link_to t(".sign_up"), sign_up_path
+        = link_to t(".forgot_password"), new_password_path

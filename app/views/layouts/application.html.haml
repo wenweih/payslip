@@ -1,0 +1,14 @@
+!!!
+%html
+  = render 'head'
+  - meta_tag :description,""
+  - meta_tag :keywords,""
+  %body{class:"#{controller_name} #{action_name}"}
+    = render 'flash'
+    - if signed_in?
+      Signed in as:
+      = current_useremail
+      = button_to '退出', sign_out_path, method: :delete
+    - else
+      = link_to "登录", sign_in_path
+    = yield
