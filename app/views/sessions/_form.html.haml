@@ -9,12 +9,13 @@
         .field
           .ui.left.icon.input
             %i.user.icon
-            = form.text_field :email, type: 'email'
+            = form.text_field :email, type: 'email', placeholder: "email"
         .field
           .ui.left.icon.input
             %i.lock.icon
-            = form.password_field :password
+            = form.password_field :password, placeholder: "password"
         = form.submit "Login", class:'ui fluid large teal submit button'
+      .ui.error.message
       .other-links
         - if Clearance.configuration.allow_sign_up?
           = link_to t(".sign_up"), sign_up_path

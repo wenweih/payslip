@@ -23,6 +23,7 @@ App = {
   },
   sitePageInit: function(){
     App.initPage.session();
+    App.initPage.user();
   },
   siteEvents: function(){
     App.bind.events();
@@ -31,7 +32,6 @@ App = {
     $(document).on('turbolinks:before-cache', function(){
       App.beforeCache.typedCache();
       App.beforeCache.formCache();
-      App.beforeCache.flashCache();
     });
     return;
   },
@@ -66,7 +66,12 @@ App = {
     session: function(){
       if($('.sessions.new').length > 0){
         App.Session.loginForm();
-        App.Session.sayHello();
+        // App.Session.sayHello();
+      }
+    },
+    user: function(){
+      if($('.users.new').length >0){
+        App.User.signupForm();
       }
     }
   },

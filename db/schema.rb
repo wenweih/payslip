@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160905102604) do
+ActiveRecord::Schema.define(version: 20160905172722) do
+
+  create_table "namespaces", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name",       null: false
+    t.string   "path",       null: false
+    t.string   "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "owner_id",   null: false
+    t.index ["owner_id"], name: "fk_rails_a4d67b8880", using: :btree
+    t.index ["path"], name: "index_namespaces_on_path", unique: true, using: :btree
+  end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.datetime "created_at",                     null: false
@@ -21,8 +32,12 @@ ActiveRecord::Schema.define(version: 20160905102604) do
     t.string   "remember_token",     limit: 128, null: false
     t.integer  "access_lever"
     t.integer  "admin"
+    t.integer  "namespace_id"
     t.index ["email"], name: "index_users_on_email", using: :btree
+    t.index ["namespace_id"], name: "index_users_on_namespace_id", using: :btree
     t.index ["remember_token"], name: "index_users_on_remember_token", using: :btree
   end
 
+  add_foreign_key "namespaces", "users", column: "owner_id"
+  add_foreign_key "users", "namespaces"
 end

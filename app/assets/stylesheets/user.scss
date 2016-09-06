@@ -1,6 +1,18 @@
 .sessions.new{
   background-color: #DADADA !important;
-  &>.sign-in{
+  &>.clearance{
+    &>.grid{
+      height: 100%;
+      &>.column{
+        max-width: 450px;
+      }
+    }
+  }
+}
+
+.users.new{
+  background-color: #DADADA !important;
+  &>.clearance{
     &>.grid{
       height: 100%;
       &>.column{

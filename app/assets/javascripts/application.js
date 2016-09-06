@@ -15,3 +15,4 @@
 //= require turbolinks
 //= require init
 //= require app.session
+//= require app.user

@@ -1,10 +1,10 @@
-App.Session = {
-  loginForm: function() {
-    $('.user_login').form({
+App.User = {
+  signupForm: function() {
+    $('.user_signup').form({
       on: 'blur',
       fields: {
         email:{
-          identifier  : "session[email]",
+          identifier  : "user[email]",
           rules:  [
             {
               type   : 'empty',
@@ -18,7 +18,7 @@ App.Session = {
           ]
         },
         password: {
-          identifier: 'session[password]',
+          identifier: 'user[password]',
           rules:  [
             {
               type: 'minLength[6]',

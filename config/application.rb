@@ -15,7 +15,7 @@ module Payslip
     config.i18n.available_locales = [:en, :'zh-CN']
     config.i18n.default_locale = :'zh-CN'
 
-    config.lograge.enabled = true
+    config.lograge.enabled = false
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
