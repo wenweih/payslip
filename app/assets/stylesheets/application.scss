@@ -3,5 +3,29 @@
 @import "font-awesome";
 @import "ns-default";
 @import "ns-style-other";
-
+@import "dashboard";
 @import "user";
+
+.headeroom{
+  background-color: #303643;
+  .menu{
+    &>.item{
+      background: none!important;
+      color: #fff !important;
+    }
+    &>.active{
+      color: #57cdf9 !important;
+    }
+    &>.item{
+      &>.button{
+        &>.menu{
+          &>.button_to{
+            &>.logout{
+              margin-left: 0px !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -5,12 +5,13 @@ class UsersController < Clearance::UsersController
 
   def create
     @user = user_from_params
-
-    if @user.save
+    begin
+      @user.save!
       sign_in @user
-      redirect_to dashboard_index_path, notice:"登录成功" and return
-    else
-      render template: "users/new"
+      redirect_to dashboard_index_path, notice:"注册成功且自动登录" and return
+    rescue  ActiveRecord::RecordInvalid => exception
+      flash[:notice] = "#{exception}"
+      render "users/new"
     end
   end
 

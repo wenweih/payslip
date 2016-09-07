@@ -27,3 +27,4 @@ gem 'rails-i18n', '~> 5.0.0'
 gem 'letter_opener', group: :development
 gem 'clearance'
 gem 'lograge'
+gem 'gon'

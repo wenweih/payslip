@@ -1,8 +1,5 @@
 class SessionsController < Clearance::SessionsController
 
-  def new
-  end
-
   def create
     @user = authenticate(params)
 
@@ -11,7 +8,7 @@ class SessionsController < Clearance::SessionsController
         redirect_to dashboard_index_path, notice:"登录成功" and return
       else
         flash.now.notice = status.failure_message
-        render template: "sessions/new", status: :unauthorized
+        render template: "sessions/new"
       end
     end
   end
@@ -23,25 +20,5 @@ class SessionsController < Clearance::SessionsController
 
   def new
     render template: "sessions/new"
-  end
-
-  private
-
-  def redirect_signed_in_users
-    if signed_in?
-      redirect_to url_for_signed_in_users
-    end
-  end
-
-  def url_after_create
-    Clearance.configuration.redirect_url
-  end
-
-  def url_after_destroy
-    sign_in_url
-  end
-
-  def url_for_signed_in_users
-    url_after_create
   end
 end

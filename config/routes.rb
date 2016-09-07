@@ -2,12 +2,11 @@ Rails.application.routes.draw do
 
   root  to: 'sessions#new'
   resources :dashboard do
-
   end
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
-  resource :session, controller: "sessions", only: [:create, :destroy]
+  resource :session, controller: "sessions", only: [:create, :destroy,  :new]
 
-  resources :users, controller: "users", only: [:create, :destroy] do
+  resources :users, controller: "users", only: [:create, :destroy,  :new] do
     resource :password,
       controller: "clearance/passwords",
       only: [:create, :edit, :update]

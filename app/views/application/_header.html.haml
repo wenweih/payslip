@@ -1,0 +1,24 @@
+-cache 'header' do
+  %header.headeroom
+    .ui.vertical.center.aligned.segment.header-menu
+      .ui.container
+        .ui.large.secondary.menu
+          = link_to "PAYSLIP",root_path, class:"item #{nav_active(path: 'dashboard#index')}"
+          = link_to "DEPARTMENT", "#", class:"item #{nav_active(path: 'blog#index')}"
+          = link_to "EMPLOYEE","#",class:'item'
+          = link_to "PORTFOLIO","#",class:'item'
+          .right.item
+            - if signed_in?
+              .ui.floating.dropdown.button
+                %span Signed in as
+                %i.dropdown.icon
+                .menu
+                  %span.item.ui.fluid.button
+                    = current_user.email
+                  = button_to 'logout', session_path, method: :delete, class:'logout ui fluid button item'
+            - else
+              = link_to "Login", sign_in_path
+:javascript
+  $('.dropdown.button').dropdown({
+    action: 'hide'
+  });
