@@ -5,17 +5,16 @@ class SessionsController < Clearance::SessionsController
 
     sign_in(@user) do |status|
       if status.success?
-        redirect_to dashboard_index_path, notice:"登录成功" and return
+        redirect_to root_path, notice:"Sign in successfully" and return
       else
-        flash.now.notice = status.failure_message
-        render template: "sessions/new"
+        redirect_to :back, notice: "#{status.failure_message}"
       end
     end
   end
 
   def destroy
     sign_out
-    redirect_to root_path, notice: "成功退出"
+    redirect_to root_path, notice: "sign out successfully"
   end
 
   def new

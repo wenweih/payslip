@@ -4,21 +4,26 @@
       .ui.container
         .ui.large.secondary.menu
           = link_to "PAYSLIP",root_path, class:"item #{nav_active(path: 'dashboard#index')}"
-          = link_to "DEPARTMENT", "#", class:"item #{nav_active(path: 'blog#index')}"
-          = link_to "EMPLOYEE","#",class:'item'
-          = link_to "PORTFOLIO","#",class:'item'
+          = link_to "DEPARTMENT", namespace_index_path, class:"item #{nav_active(path: 'namespace#index')}"
+          = link_to "EMPLOYEE", employee_index_path, class:"item #{nav_active(path: 'employee#index')}"
           .right.item
             - if signed_in?
-              .ui.floating.dropdown.button
-                %span Signed in as
+              .ui.dropdown.signed_in_dpd
+                = current_user.email
                 %i.dropdown.icon
                 .menu
-                  %span.item.ui.fluid.button
-                    = current_user.email
-                  = button_to 'logout', session_path, method: :delete, class:'logout ui fluid button item'
+                  = link_to "javascript:void(0)", class:'item', data:  { behavior: "adddepartment" } do
+                    %i.add.group.icon
+                    Add Department
+                  = link_to "javascript:void(0)", class:'item', data: { behavior: 'addemployee'  } do
+                    %i.add.user.icon
+                    Add Employee
+                  = link_to "javascript:void(0)", class:'item', data: { behavior: 'calculate' } do
+                    %i.calculator.icon
+                    Calculate payslip
+                  = link_to session_path, method: :delete, class:'logout item' do
+                    %i.sign.out.icon
+                    logout
+              = render  'modal'
             - else
               = link_to "Login", sign_in_path
-:javascript
-  $('.dropdown.button').dropdown({
-    action: 'hide'
-  });

@@ -40,9 +40,9 @@
                   = select_tag :namespace, "<option value='0'>None assigned</option>" + options_from_collection_for_select(@namespaces, "id", "name", u.namespace.present? ? u.namespace.id : nil), { prompt: u.namespace.present? ? "" : "none assigned", class:'change_namespace ui dropdown' }
               %td
                 .ui.buttons
-                  = link_to "#", class:'ui mini basic green button', title: 'edie employee' do
+                  = link_to "#", class:'ui mini basic green icon button', title: 'edie employee' do
                     %i.edit.icon
-                  = link_to "#", class:'ui mini basic red button', title: 'delete employee' do
+                  = link_to "#", class:'ui mini basic red icon button', title: 'delete employee' do
                     %i.delete.icon
                   - if u.namespace.present?
                     = set_leader_link u

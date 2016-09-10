@@ -1,0 +1,68 @@
+.ui.modal.small.add_department_modal
+  %i.close.icon
+  .header
+    Add Department
+  .content
+    = form_tag namespace_index_path, {class:'ui form add_department_form'} do |f|
+      .field
+        %label
+          using comma as token separators to add multiple departments
+        = select_tag  :namespace, nil, :multiple => true, class:'namespace_selector ui multiple search dropdown'
+  .actions
+    .ui.black.deny.button
+      Cancel
+    .ui.positive.right.labeled.icon.button
+      OK
+      %i.checkmark.icon
+.long.ui.modal.small.add_employee_modal
+  %i.close.icon
+  .header
+    Add Employee
+  .content
+    = form_for User.new, :html => {class:'ui form add_employee_form'} do |f|
+      .field
+        %label
+          employee email
+        = f.text_field :email
+      .field
+        %label
+          employee password(default hwwhww)
+        = f.password_field  :password, value: 'hwwhww'
+      .field
+        %label
+          employee first name
+        = f.text_field  :first_name
+      .field
+        %label
+          employee last name
+        = f.text_field  :last_name
+      .field
+        %label
+          Annual salary
+        = f.text_field  :annual_salary
+      .field
+        %label
+          super rake
+        = f.text_field  :super_rate
+  .actions
+    .ui.black.deny.button
+      Cancel
+    .ui.positive.right.labeled.icon.button
+      OK
+      %i.checkmark.icon
+.ui.modal.small.calculate
+  %i.close.icon
+  .header
+    Calculate payslip
+  .content
+    = form_tag namespace_index_path, {class:'ui form calculate_form'} do |f|
+      .field
+        %label
+          using comma as token separators to add multiple departments
+        = select_tag  :namespace, nil, :multiple => true, class:'namespace_selector ui multiple search dropdown'
+  .actions
+    .ui.black.deny.button
+      Cancel
+    .ui.positive.right.labeled.icon.button
+      OK
+      %i.checkmark.icon

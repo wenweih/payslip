@@ -15,30 +15,49 @@
 - else
   .department_list
     .ui.container
-      .ui.styled.fluid.accordion
-        - @np.each  do  |n|
-          .title
-            %i.dropdown.icon
-            %span.title_desc
-              Department:
-              = n.name
-            = select_tag  "Add Employee to the department", nil, { prompt:'Add employee for the department', class:'add_employee_dropdpwn ui search dropdown' }
-          .content
-            %table.ui.basic.table
-              %thead
-                %tr
-                  %th ID
-                  %th EMAIL
-                  %th FIRST NAME
-                  %th LAST NAME
-                  %th ANNUAL SALARY
-                  %th SUPER RATE
-              %tbody
-                - n.users.each do |u|
-                  %tr
-                    %td #{u.id}
-                    %td #{u.email}
-                    %td #{u.first_name}
-                    %td #{u.last_name}
-                    %td #{u.annual_salary}
-                    %td #{u.super_rate}
+      .ui.fluid.form
+        .field
+          = form_tag  add_employee_to_department_path, method: :post, class:'add_to_department_form ui mini form' do
+            .three.fields
+              .field
+                = select_tag  :employee, options_from_collection_for_select(@free_employee, "id","email"), { prompt:'Search free employee', class:'add_to_department ui search dropdown' }
+              .field
+                = select_tag  :department, options_from_collection_for_select(@np, "id","name"), { prompt:'Add employee for the department', class:'add_to_department ui search dropdown' }
+              .field
+                = link_to "javascropt:void(0)", class: 'ui mini button', data: { behavior: 'addemployeetodepartment' } do
+                  %i.add.user.icon
+                  Add employee for department
+        .ui.styled.fluid.accordion.field
+          - @np.each  do  |n|
+            .title
+              %i.dropdown.icon
+              %span.title_desc
+                %i.users.icon
+                = n.name
+                (#{n.users.size})
+            .content
+              - if n.users.present?
+                %table.ui.basic.table
+                  %thead
+                    %tr
+                      %th ID
+                      %th EMAIL
+                      %th FIRST NAME
+                      %th LAST NAME
+                      %th ANNUAL SALARY
+                      %th SUPER RATE
+                      %th OPERATE
+                  %tbody
+                    - n.users.each do |u|
+                      %tr
+                        %td #{u.id}
+                        %td #{u.email}
+                        %td #{u.first_name}
+                        %td #{u.last_name}
+                        %td #{u.annual_salary}
+                        %td #{u.super_rate}
+                        %td
+                          = set_leader_link u
+              - else
+                .ui.error.message
+                  There is not employee in #{n.name} department

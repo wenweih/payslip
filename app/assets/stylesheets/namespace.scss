@@ -3,10 +3,9 @@
   &>.department_list{
     margin-top: 2rem;
     &>.container{
-      &>.accordion{
-        &>.title{
-          &>.add_employee{
-            float: right;
+      &>.ui.fluid.form{
+        &>.accordion{
+          &>.title{
           }
         }
       }

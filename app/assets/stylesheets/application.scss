@@ -1,11 +1,13 @@
-@import "semantic";
-@import "font-awesome-sprockets";
-@import "font-awesome";
-@import "ns-default";
-@import "ns-style-other";
+/*
+ *= require semantic
+ *= require ns-default
+ *= require ns-style-other
+*/
+
 @import "dashboard";
 @import "user";
-
+@import "namespace";
+@import "employee";
 .headeroom{
   background-color: #303643;
   .menu{
@@ -17,13 +19,68 @@
       color: #57cdf9 !important;
     }
     &>.item{
-      &>.button{
+      &>.dropdown{
         &>.menu{
+          margin-top: 2rem !important;
           &>.button_to{
             &>.logout{
               margin-left: 0px !important;
             }
           }
+        }
+      }
+    }
+  }
+}
+
+%empty{
+  &>.empty{
+    .ui.container{
+      &>.introduction{
+        position: relative;
+        clear: both;
+        display: block;
+        text-align: center;
+        &> h2{
+          color: #425771;
+        }
+        &> p{
+          color: #c4cdd8;
+        }
+        &>.button{
+          border-radius: 25px;
+        }
+      }
+      height: 55vh;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      min-height: 600px;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+      -webkit-justify-content: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+    }
+  }
+}
+.ui.modal{
+  &>.close{
+    color: rgba(0,0,0,.87) !important;
+    top: 0 !important;
+    right: 0 !important;
+  }
+  &>.content{
+    &>.ui.form{
+      &>.field{
+        &>label{
+          color: rgba(0,0,0,.4);
         }
       }
     }

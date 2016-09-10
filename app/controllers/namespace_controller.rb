@@ -1,6 +1,7 @@
 class NamespaceController < ApplicationController
   def index
     @np = Namespace.all
+    @free_employee = User.where(:namespace_id => nil)
   end
 
   def create
@@ -45,6 +46,10 @@ class NamespaceController < ApplicationController
     respond_to  do  |format|
       format.json { render json: query_result}
     end
+  end
+
+  def add_employee_to_department
+
   end
 
 end

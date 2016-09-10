@@ -49,7 +49,7 @@
       var msg = this.message;
       this.ntf.className = 'ns-box ns-other' + ' ns-effect-thumbslider' + ' ns-type-' + this.options.type;
       var strinner = '<div class="ns-box-inner">';
-      strinner += "<div class='ns-thumb'><img src='/user.jpg'/></div><div class='ns-content'><p><a href='#'>Zoe Moulder</a>\n</p>"
+      strinner += "<div class='ns-thumb'><img src='/user.jpg'/></div><div class='ns-content'><p><a href='#'>ENTERPRISE PAYSLIP SYSTEM</a>\n</p>"
       strinner += "<p>"+ msg + "</p>"
       strinner += "</div>"
       strinner += '</div>';

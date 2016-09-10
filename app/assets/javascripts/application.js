@@ -13,6 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require js-routes
 //= require init
 //= require app.session
 //= require app.user
+//= require app.namespace
+//= require app.employee

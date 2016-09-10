@@ -55,23 +55,20 @@ App = {
     initSemanticUITool: function(){
       $('.signed_in_dpd').dropdown({  action: 'hide'  });
       $('.namespace_selector').dropdown({allowAdditions: true});
-      $('.add_employee_dropdpwn').dropdown({
-        fields: {
-
-        },
-        apiSettings:  {
-          url: Routes.query_user_path(),
-          cache: false
-        },
-        saveRemoteData: false,
+      $('.add_to_department').dropdown();
+      $('.add_employee_dropdown').dropdown({
+        // fields: {
+        //
+        // },
+        // apiSettings:  {
+        //   url: Routes.query_user_path(),
+        //   cache: false
+        // },
+        // saveRemoteData: false,
 
       });
       $('.change_namespace').dropdown();
-      $('.ui.accordion').accordion({
-        selector: {
-          trigger: '.title .title_desc'
-        }
-      });
+      $('.ui.accordion').accordion();
     }
   },
   initPage: {
@@ -80,7 +77,8 @@ App = {
         App.Session.loginForm();
       }
       if($('.namespace.index').length > 0){
-        $('.ui.accordion').children().slice(0,2).addClass('active')
+        $('.ui.accordion').children().slice(0,2).addClass('active');
+        App.Namespace.add_employee_to_department_form();
       }
       if($('.employee.index').length >0){
         $('.change_namespace').change(function(){
@@ -104,7 +102,7 @@ App = {
       $(document).on('click',"*[data-behavior]", function(e){
         var behavior = $(e.target).attr("data-behavior");
         if ( behavior !== undefined ) {
-          eval("App.events." + behavior + "();");
+          eval("App.events." + behavior + "(e);");
         }
       })
     }
@@ -134,6 +132,16 @@ App = {
 
         }
       }).modal('show');
+    },
+    addemployeetodepartment: function(event){
+
+      if($('.add_to_department_form').form('is valid')){
+        console.log($(event.target).closest('form'));
+        $(event.target).closest('form').trigger('submit');
+      }else{
+        console.log("nnnnn");
+      }
+
     },
     calculate: function(){
       $('.calculate').modal('show');

@@ -33,9 +33,9 @@ class EmployeeController < ApplicationController
     namespace.leader = user if params[:type] == "assign"
     namespace.leader = User.where(admin: 1).first if params[:type] == "cancel"
     begin
-      redirect_to employee_index_path, notice: "#{namespace.name} is belong to #{namespace.leader.email}" and return if namespace.save!
+      redirect_to :back, notice: "#{namespace.name} is belong to #{namespace.leader.email}" and return if namespace.save!
     rescue StandardError => error
-      redirect_to employee_index_path, notice: "#{error}"
+      redirect_to :back, notice: "#{error}"
     end
   end
 
