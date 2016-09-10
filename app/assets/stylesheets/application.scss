@@ -2,6 +2,7 @@
  *= require semantic
  *= require ns-default
  *= require ns-style-other
+ *= require datepicker
 */
 
 @import "dashboard";
@@ -81,6 +82,13 @@
       &>.field{
         &>label{
           color: rgba(0,0,0,.4);
+        }
+      }
+      &>.fields{
+        &>.field{
+          &>label{
+            color: rgba(0,0,0,.4);
+          }
         }
       }
     }

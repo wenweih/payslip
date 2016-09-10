@@ -24,7 +24,7 @@
               .field
                 = select_tag  :department, options_from_collection_for_select(@np, "id","name"), { prompt:'Add employee for the department', class:'add_to_department ui search dropdown' }
               .field
-                = link_to "javascropt:void(0)", class: 'ui mini button', data: { behavior: 'addemployeetodepartment' } do
+                = link_to "javascript:void(0)", class: 'ui mini button', data: { behavior: 'addemployeetodepartment' } do
                   %i.add.user.icon
                   Add employee for department
         .ui.styled.fluid.accordion.field

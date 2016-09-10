@@ -5,6 +5,7 @@
 //= require jquery.timeago.zh-CN
 //= require modernizr.custom
 //= require notification
+//= require datepicker
 window.App || (window.App = {});
 App = {
   init: function(){
@@ -21,7 +22,8 @@ App = {
     App.initUI.initTimeago();
     App.initUI.initSemanticUITool();
     App.initUI.initJsroute();
-    App.intiCommon
+    App.initUI.initDatePicker();
+    // App.intiCommon
     return;
   },
   commonInit: function(){
@@ -52,10 +54,14 @@ App = {
     initJsroute: function(){
       jQuery.extend(window, Routes);
     },
+    initDatePicker: function(){
+      $('[data-toggle="datepicker"]').datepicker();
+    },
     initSemanticUITool: function(){
       $('.signed_in_dpd').dropdown({  action: 'hide'  });
       $('.namespace_selector').dropdown({allowAdditions: true});
       $('.add_to_department').dropdown();
+      $('.employee_calculate').dropdown();
       $('.add_employee_dropdown').dropdown({
         // fields: {
         //

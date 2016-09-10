@@ -40,9 +40,4 @@ class UsersController < Clearance::UsersController
       user.super_rate = super_rate
     end
   end
-
-  # def user_params
-  #   params.require(:user).permit(:email, :password, :first_name, :last_name, :annual_salary,  :super_rate)
-  #   # params[Clearance.configuration.user_parameter] || Hash.new
-  # end
 end
