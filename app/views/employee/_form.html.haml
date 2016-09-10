@@ -1,0 +1,19 @@
+.ui.very.padded.segment
+  = form_for employee, url: employee_path(employee), :html => { class:'ui form add_employee_form'} do |f|
+    .field
+      %label
+        employee first name
+      = f.text_field  :first_name
+    .field
+      %label
+        employee last name
+      = f.text_field  :last_name
+    .field
+      %label
+        Annual salary
+      = f.text_field  :annual_salary
+    .field
+      %label
+        super rake
+      = f.text_field  :super_rate
+    = f.submit  :update, class: 'ui green button'

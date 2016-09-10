@@ -2,13 +2,5 @@
   @extend %empty;
   &>.department_list{
     margin-top: 2rem;
-    &>.container{
-      &>.ui.fluid.form{
-        &>.accordion{
-          &>.title{
-          }
-        }
-      }
-    }
   }
 }
