@@ -1,0 +1,44 @@
+- title 'Department'
+- if @np.blank?
+  .empty
+    .ui.container
+      .introduction
+        %h2
+          Add Your First Department
+        %p
+          Department is the container of employees. You can asigne a leader for the department
+        %p
+          leader has the ability to view all employee payslip in the department
+        = button_tag  class:'positive ui icon button', data:  { behavior: "adddepartment" } do
+          %i.add.icon
+          Add Department
+- else
+  .department_list
+    .ui.container
+      .ui.styled.fluid.accordion
+        - @np.each  do  |n|
+          .title
+            %i.dropdown.icon
+            %span.title_desc
+              Department:
+              = n.name
+            = select_tag  "Add Employee to the department", nil, { prompt:'Add employee for the department', class:'add_employee_dropdpwn ui search dropdown' }
+          .content
+            %table.ui.basic.table
+              %thead
+                %tr
+                  %th ID
+                  %th EMAIL
+                  %th FIRST NAME
+                  %th LAST NAME
+                  %th ANNUAL SALARY
+                  %th SUPER RATE
+              %tbody
+                - n.users.each do |u|
+                  %tr
+                    %td #{u.id}
+                    %td #{u.email}
+                    %td #{u.first_name}
+                    %td #{u.last_name}
+                    %td #{u.annual_salary}
+                    %td #{u.super_rate}

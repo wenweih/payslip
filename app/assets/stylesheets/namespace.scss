@@ -1,0 +1,15 @@
+.namespace.index {
+  @extend %empty;
+  &>.department_list{
+    margin-top: 2rem;
+    &>.container{
+      &>.accordion{
+        &>.title{
+          &>.add_employee{
+            float: right;
+          }
+        }
+      }
+    }
+  }
+}
