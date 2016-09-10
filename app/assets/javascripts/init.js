@@ -13,13 +13,20 @@ App = {
       App.turbolinksCache();
       App.sitePageInit();
       App.siteEvents();
+      App.commonInit();
     })();
   },
   siteBootUp: function(){
     App.initUI.initHeadroom();
     App.initUI.initTimeago();
     App.initUI.initSemanticUITool();
+    App.initUI.initJsroute();
+    App.intiCommon
     return;
+  },
+  commonInit: function(){
+    App.Namespace.add_department_form();
+    App.Employee.add_employee_form();
   },
   sitePageInit: function(){
     App.initPage.session();
@@ -30,7 +37,6 @@ App = {
   },
   turbolinksCache: function(){
     $(document).on('turbolinks:before-cache', function(){
-      App.beforeCache.typedCache();
       App.beforeCache.formCache();
     });
     return;
@@ -39,34 +45,47 @@ App = {
   initUI: {
     initHeadroom: function(){
       $(".headeroom").headroom();
-      $(document).on('scroll', function(){
-        if ($(this).scrollTop() == 0){
-          $('.headeroom').addClass('header-transparent');
-        }else {
-          $('.headeroom').removeClass('header-transparent');
-          $(".headeroom").css({
-            'background':'#fff',
-            'border-bottom':'1px solid #DDD',
-          });
-          $(".headeroom").find("a").css({
-            color: '#66676e'
-          });
-        }
-      });
     },
     initTimeago: function(){
       $("time.timeago").timeago();
     },
+    initJsroute: function(){
+      jQuery.extend(window, Routes);
+    },
     initSemanticUITool: function(){
-      $('.ui.sidebar').sidebar('attach events', '.toc.item');
-      $('.sub_menu').sticky({ context: '.post-index' });
+      $('.signed_in_dpd').dropdown({  action: 'hide'  });
+      $('.namespace_selector').dropdown({allowAdditions: true});
+      $('.add_employee_dropdpwn').dropdown({
+        fields: {
+
+        },
+        apiSettings:  {
+          url: Routes.query_user_path(),
+          cache: false
+        },
+        saveRemoteData: false,
+
+      });
+      $('.change_namespace').dropdown();
+      $('.ui.accordion').accordion({
+        selector: {
+          trigger: '.title .title_desc'
+        }
+      });
     }
   },
   initPage: {
     session: function(){
       if($('.sessions.new').length > 0){
         App.Session.loginForm();
-        // App.Session.sayHello();
+      }
+      if($('.namespace.index').length > 0){
+        $('.ui.accordion').children().slice(0,2).addClass('active')
+      }
+      if($('.employee.index').length >0){
+        $('.change_namespace').change(function(){
+          $(this).closest('form').trigger('submit');
+        });
       }
     },
     user: function(){
@@ -76,14 +95,8 @@ App = {
     }
   },
   beforeCache:  {
-    typedCache: function(){
-      $('.typed-cursor').remove();
-    },
     formCache: function(){
-      $('.contact_form').form('clear');
-    },
-    flashCache: function(){
-      $('.ns-box').remove();
+      $('.ui.form').form('clear');
     }
   },
   bind: {
@@ -97,26 +110,38 @@ App = {
     }
   },
   events: {
-    homeScrollNext: function(){
-      $("html,body").animate({ scrollTop: $(window).height()}, 800);
+    adddepartment: function(){
+      $('.add_department_modal').modal({
+        onApprove : function() {
+          if($('.add_department_form').form('is valid')){
+            $('.add_department_form').form('submit');
+          }else{
+            return false;
+          }
+
+        }
+      }).modal('show');
     },
-    homeContactMe: function(){
-      $("html,body").animate({ scrollTop: $(document).height()*2}, 800);
+    addemployee: function(){
+      $('.add_employee_modal').modal({
+        onApprove : function() {
+          if($('.add_employee_form').form('is valid')){
+            $('.add_employee_form').form('submit');
+          }else{
+            console.log("false");
+            return false;
+          }
+
+        }
+      }).modal('show');
     },
-    messageForm:  function(){
-      var $form = $('.contact_form');
-      if($form.form('is valid')){
-        $(this).addClass('disabled');
-      }else{
-        $form.submit(function(e){
-          e.preventDefault();
-          $('.contact_btn').text("Failed to send");
-        });
-      }
+    calculate: function(){
+      $('.calculate').modal('show');
     }
   }
 };
 
 $(document).on('turbolinks:load', function(){
+  // Here we go
   App.init();
 });

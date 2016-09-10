@@ -14,7 +14,7 @@
           Add Employee
 - else
   .employee_list
-    .ui.container
+    .ui.container.fluid
       %table.ui.green.table
         %thead
           %tr
@@ -24,7 +24,7 @@
             %th LAST NAME
             %th ANNUAL SALARY
             %th SUPER RATE
-            %th DEPARTMENT
+            %th DEPARTMENT(ASSIGNED)
             %th OPERATE
         %tbody
           - @users.each do |u|
@@ -35,12 +35,16 @@
               %td #{u.last_name}
               %td #{u.annual_salary}
               %td #{u.super_rate}
-              %td #{u.namespace.name rescue ''}
               %td
-                = link_to "#", class:'ui mini basic green button' do
-                  %i.edit.icon
-                  Edit
-                = link_to "#", class:'ui nimi basic red button' do
-                  %i.delete.icon
-                  destroy
+                = form_tag  change_namespace_employee_path(u), method: :put do
+                  = select_tag :namespace, "<option value='0'>None assigned</option>" + options_from_collection_for_select(@namespaces, "id", "name", u.namespace.present? ? u.namespace.id : nil), { prompt: u.namespace.present? ? "" : "none assigned", class:'change_namespace ui dropdown' }
+              %td
+                .ui.buttons
+                  = link_to "#", class:'ui mini basic green button', title: 'edie employee' do
+                    %i.edit.icon
+                  = link_to "#", class:'ui mini basic red button', title: 'delete employee' do
+                    %i.delete.icon
+                  - if u.namespace.present?
+                    = link_to "#", class: 'ui mini basic blue button', title: 'set as depaetment leader' do
+                      %i.setting.icon
       = paginate @users

@@ -1,12 +1,18 @@
 Rails.application.routes.draw do
 
-  root  to: 'sessions#new'
-  resources :dashboard do
+  resources :dashboard
+  resources :employee do
+    member do
+      put 'change_namespace'
+    end
   end
+  resources :namespace
+  get 'query_user', to: 'namespace#query_user'
+
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "sessions", only: [:create, :destroy,  :new]
 
-  resources :users, controller: "users", only: [:create, :destroy,  :new] do
+  resources :users, controller: "users", only: [:create, :destroy] do
     resource :password,
       controller: "clearance/passwords",
       only: [:create, :edit, :update]
@@ -14,5 +20,12 @@ Rails.application.routes.draw do
 
   get "/sign_in" => "sessions#new", as: "sign_in"
   get "/sign_up" => "users#new", as: "sign_up"
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  constraints Clearance::Constraints::SignedIn.new do
+    root to: "dashboard#index"
+  end
+  constraints Clearance::Constraints::SignedOut.new do
+    root to: "sessions#new"
+  end
+
 end
