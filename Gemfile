@@ -21,10 +21,12 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'mysql2'
-gem 'font-awesome-sass'
 gem 'haml-rails', '~> 0.9'
 gem 'rails-i18n', '~> 5.0.0'
 gem 'letter_opener', group: :development
 gem 'clearance'
 gem 'lograge'
 gem 'gon'
+gem 'bulk_insert'
+gem "js-routes"
+gem 'kaminari'

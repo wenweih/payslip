@@ -1,0 +1,46 @@
+- title 'Employee'
+- if @users.blank?
+  .empty
+    .ui.container
+      .introduction
+        %h2
+          Add Employees
+        %p
+          Employee belongs to Department, they can view their own payslip
+        %p
+          leader has the ability to view all employee payslip in the department
+        = button_tag  class:'positive ui icon button', data:  { behavior: "addemployee" } do
+          %i.add.icon
+          Add Employee
+- else
+  .employee_list
+    .ui.container
+      %table.ui.green.table
+        %thead
+          %tr
+            %th ID
+            %th EMAIL
+            %th FIRST NAME
+            %th LAST NAME
+            %th ANNUAL SALARY
+            %th SUPER RATE
+            %th DEPARTMENT
+            %th OPERATE
+        %tbody
+          - @users.each do |u|
+            %tr
+              %td #{u.id}
+              %td #{u.email}
+              %td #{u.first_name}
+              %td #{u.last_name}
+              %td #{u.annual_salary}
+              %td #{u.super_rate}
+              %td #{u.namespace.name rescue ''}
+              %td
+                = link_to "#", class:'ui mini basic green button' do
+                  %i.edit.icon
+                  Edit
+                = link_to "#", class:'ui nimi basic red button' do
+                  %i.delete.icon
+                  destroy
+      = paginate @users

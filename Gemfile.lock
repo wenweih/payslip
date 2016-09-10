@@ -42,6 +42,8 @@ GEM
     arel (7.1.1)
     bcrypt (3.1.11)
     builder (3.2.2)
+    bulk_insert (1.2.1)
+      activerecord (>= 4.1.0)
     byebug (9.0.5)
     clearance (1.14.2)
       bcrypt
@@ -61,8 +63,6 @@ GEM
     erubis (2.7.0)
     execjs (2.7.0)
     ffi (1.9.14)
-    font-awesome-sass (4.6.2)
-      sass (>= 3.2)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     gon (6.1.0)
@@ -91,7 +91,13 @@ GEM
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
+    js-routes (1.3.0)
+      railties (>= 3.2)
+      sprockets-rails
     json (2.0.2)
+    kaminari (0.17.0)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     launchy (2.4.3)
       addressable (~> 2.3)
     letter_opener (1.4.1)
@@ -172,7 +178,7 @@ GEM
     sprockets (3.7.0)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
-    sprockets-rails (3.1.1)
+    sprockets-rails (3.2.0)
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
@@ -199,14 +205,16 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bulk_insert
   byebug
   clearance
   coffee-rails (~> 4.2)
-  font-awesome-sass
   gon
   haml-rails (~> 0.9)
   jbuilder (~> 2.5)
   jquery-rails
+  js-routes
+  kaminari
   letter_opener
   listen (~> 3.0.5)
   lograge

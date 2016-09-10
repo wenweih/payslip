@@ -1,0 +1,11 @@
+.employee.index{
+  @extend %empty;
+  &>.employee_list{
+    margin-top: 2rem;
+    &>.ui.container{
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+  }
+}
