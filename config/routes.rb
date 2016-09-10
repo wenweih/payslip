@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :employee do
     member do
       put 'change_namespace'
+      put 'set_leader'
     end
   end
   resources :namespace

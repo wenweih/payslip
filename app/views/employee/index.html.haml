@@ -45,6 +45,5 @@
                   = link_to "#", class:'ui mini basic red button', title: 'delete employee' do
                     %i.delete.icon
                   - if u.namespace.present?
-                    = link_to "#", class: 'ui mini basic blue button', title: 'set as depaetment leader' do
-                      %i.setting.icon
+                    = set_leader_link u
       = paginate @users
