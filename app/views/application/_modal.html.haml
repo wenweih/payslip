@@ -44,6 +44,11 @@
         %label
           super rake
         = f.text_field  :super_rate
+      - if Namespace.all.present?
+        .field
+          %label
+            Add to department
+          = select_tag  :department, options_from_collection_for_select(Namespace.all, "id","name"), { prompt:'Add employee for the department', class:'add_to_department ui search dropdown' }
   .actions
     .ui.black.deny.button
       Cancel

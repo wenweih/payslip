@@ -8,7 +8,7 @@ class UsersController < Clearance::UsersController
   def create
     @user = user_from_params
     begin
-      @user.save!
+      @user.update_attribute(:namespace_id, params[:department]) if @user.save!
       if @user.first_name.present?
         redirect_to :back, notice:"Successfully add #{@user.first_name}" and return
       else
