@@ -19,3 +19,4 @@
 //= require app.user
 //= require app.namespace
 //= require app.employee
+//= require app.calculate

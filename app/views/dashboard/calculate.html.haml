@@ -1,0 +1,22 @@
+- title 'create payslip'
+.ui.container
+  = form_tag result_path, { method: :post, remote: true, class:'ui form calculate_form'} do |f|
+    .ui.error.message
+    .ui.very.padded.segment
+      .field
+        %label
+          select a employee to calculate
+        = select_tag  :employee, options_from_collection_for_select(@collections, "id","full_name"), { prompt:'select employee', class:'employee_calculate ui search dropdown' }
+      .field
+        %label
+          Start Date
+        = text_field_tag  :start, nil, data: { toggle: "datepicker" }
+      .field
+        %label
+          End Date
+        = text_field_tag  :end, nil, data: { toggle: "datepicker" }
+      = submit_tag  :Calculate, class:'tiny ui green button'
+      = link_to  "Reset", "javascript:void(0)", class:'tiny ui reset button', data: { behavior: "resetcalculateform" }
+      %span.desc
+        Only these users who personal information are improved  can calculate salary
+  .result_list

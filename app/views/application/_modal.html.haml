@@ -55,29 +55,3 @@
     .ui.positive.right.labeled.icon.button
       OK
       %i.checkmark.icon
-.ui.modal.small.calculate
-  %i.close.icon
-  .header
-    Calculate payslip
-  .content
-    = form_tag namespace_index_path, {class:'ui form calculate_form'} do |f|
-      .field
-        %label
-          select a employee to calculate
-        - collections = User.where.not(annual_salary: nil, super_rate: nil, first_name: nil, last_name: nil)
-        = select_tag  :employee, options_from_collection_for_select(collections, "id","full_name"), { prompt:'select employee', class:'employee_calculate ui search dropdown' }
-      .two.fields
-        .field
-          %label
-            Start Date
-          = text_field_tag  :start, nil, data: { toggle: "datepicker" }
-        .field
-          %label
-            End Date
-          = text_field_tag  :end, nil, data: { toggle: "datepicker" }
-  .actions
-    .ui.black.deny.button
-      Cancel
-    .ui.positive.right.labeled.icon.button
-      OK
-      %i.checkmark.icon

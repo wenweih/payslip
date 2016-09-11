@@ -4,6 +4,6 @@ class User < ApplicationRecord
   paginates_per 5
 
   def full_name
-    "#{self.first_name}, #{self.last_name}"
+    "first name:#{self.first_name}, last name:#{self.last_name}"
   end
 end

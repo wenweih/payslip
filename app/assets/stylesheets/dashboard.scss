@@ -1,3 +1,19 @@
 .dashboard.index{
-  
+
+}
+.dashboard.calculate{
+  &>.ui.container{
+    &>.calculate_form{
+      &>.segment{
+        &>.field{
+          &>label{
+            color: rgba(0, 0, 0, 0.4);;
+          }
+        }
+        &>.desc{
+          float: right;
+        }
+      }
+    }
+  }
 }

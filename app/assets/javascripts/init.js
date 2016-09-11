@@ -23,12 +23,12 @@ App = {
     App.initUI.initSemanticUITool();
     App.initUI.initJsroute();
     App.initUI.initDatePicker();
-    // App.intiCommon
     return;
   },
   commonInit: function(){
     App.Namespace.add_department_form();
     App.Employee.add_employee_form();
+
   },
   sitePageInit: function(){
     App.initPage.session();
@@ -91,6 +91,9 @@ App = {
           $(this).closest('form').trigger('submit');
         });
       }
+      if($('.dashboard.calculate').length > 0){
+        App.Calculate.calculate_form();
+      }
     },
     user: function(){
       if($('.users.new').length >0){
@@ -132,7 +135,6 @@ App = {
           if($('.add_employee_form').form('is valid')){
             $('.add_employee_form').form('submit');
           }else{
-            console.log("false");
             return false;
           }
 
@@ -147,10 +149,9 @@ App = {
       }else{
         console.log("nnnnn");
       }
-
     },
-    calculate: function(){
-      $('.calculate').modal('show');
+    resetcalculateform: function(){
+      $('.calculate_form').form('reset');
     }
   }
 };

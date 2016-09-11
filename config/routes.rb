@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   end
   resources :namespace
   post 'add_employee_to_department', to: 'namespace#add_employee_to_department'
+  get 'calculate', to: 'dashboard#calculate'
+  post 'result', to: 'dashboard#result'
   get 'query_user', to: 'namespace#query_user'
 
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]

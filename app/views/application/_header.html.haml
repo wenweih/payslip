@@ -18,7 +18,7 @@
                   = link_to "javascript:void(0)", class:'item', data: { behavior: 'addemployee'  } do
                     %i.add.user.icon
                     Add Employee
-                  = link_to "javascript:void(0)", class:'item', data: { behavior: 'calculate' } do
+                  = link_to calculate_path, method: :get, class:'item' do
                     %i.calculator.icon
                     Calculate payslip
                   = link_to session_path, method: :delete, class:'logout item' do
