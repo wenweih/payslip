@@ -2,6 +2,8 @@
 需求文档在 [doc.md](./doc/doc.md) 文件中，只要是实现员工薪资计算功能。  
 ### Demo
 [shubenhua.org](http://shubenhua.org/)
+email: admin@qq.com
+password: hwwhww
 ### 环境依赖
 - Ruby > 2.2
 - Rails 5.0.1
