@@ -1,1 +1,23 @@
 - title "Dashboard"
+.empty
+  .ui.container
+    .introduction
+      %h2
+        Add Employees
+      %p
+        Employee belongs to Department, they can view their own payslip
+      %p
+        leader has the ability to view all employee payslip in the department
+      = button_tag  class:'positive ui icon button', data:  { behavior: "addemployee" } do
+        %i.add.icon
+        Add Employee
+      .ui.divider  
+      %h2
+        Add Department
+      %p
+        Department is the container of employees. You can asigne a leader for the department
+      %p
+        leader has the ability to view all employee payslip in the department
+      = button_tag  class:'positive ui icon button', data:  { behavior: "adddepartment" } do
+        %i.add.icon
+        Add Department
