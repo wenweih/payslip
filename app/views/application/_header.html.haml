@@ -1,30 +1,29 @@
--cache 'header' do
-  %header.headeroom
-    .ui.vertical.center.aligned.segment.header-menu
-      .ui.container
-        .ui.large.secondary.menu
-          = link_to "PAYSLIP",root_path, class:"item #{nav_active(path: 'dashboard#index')}"
+%header.headeroom
+  .ui.vertical.center.aligned.segment.header-menu
+    .ui.container
+      .ui.large.secondary.menu
+        = link_to "PAYSLIP",root_path, class:"item #{nav_active(path: 'dashboard#index')}"
+        - if current_user
+          = link_to "DEPARTMENT", namespace_index_path, class:"item #{nav_active(path: 'namespace#index')}"
+          = link_to "EMPLOYEE", employee_index_path, class:"item #{nav_active(path: 'employee#index')}"
+        .right.item
           - if current_user
-            = link_to "DEPARTMENT", namespace_index_path, class:"item #{nav_active(path: 'namespace#index')}"
-            = link_to "EMPLOYEE", employee_index_path, class:"item #{nav_active(path: 'employee#index')}"
-          .right.item
-            - if current_user
-              .ui.dropdown.signed_in_dpd
-                = current_user.email
-                %i.dropdown.icon
-                .menu
-                  = link_to "javascript:void(0)", class:'item', data:  { behavior: "adddepartment" } do
-                    %i.add.group.icon
-                    Add Department
-                  = link_to "javascript:void(0)", class:'item', data: { behavior: 'addemployee'  } do
-                    %i.add.user.icon
-                    Add Employee
-                  = link_to calculate_path, method: :get, class:'item' do
-                    %i.calculator.icon
-                    Calculate payslip
-                  = link_to session_path, method: :delete, class:'logout item' do
-                    %i.sign.out.icon
-                    logout
-              = render  'modal'
-            - else
-              = link_to "Login", sign_in_path
+            .ui.dropdown.signed_in_dpd
+              = current_user.email
+              %i.dropdown.icon
+              .menu
+                = link_to "javascript:void(0)", class:'item', data:  { behavior: "adddepartment" } do
+                  %i.add.group.icon
+                  Add Department
+                = link_to "javascript:void(0)", class:'item', data: { behavior: 'addemployee'  } do
+                  %i.add.user.icon
+                  Add Employee
+                = link_to calculate_path, method: :get, class:'item' do
+                  %i.calculator.icon
+                  Calculate payslip
+                = link_to session_path, method: :delete, class:'logout item' do
+                  %i.sign.out.icon
+                  logout
+            = render  'modal'
+          - else
+            = link_to "Login", sign_in_path
