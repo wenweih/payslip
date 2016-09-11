@@ -44,6 +44,9 @@ GEM
     builder (3.2.2)
     bulk_insert (1.2.1)
       activerecord (>= 4.1.0)
+    business_time (0.7.6)
+      activesupport (>= 3.1.0)
+      tzinfo
     byebug (9.0.5)
     clearance (1.14.2)
       bcrypt
@@ -206,6 +209,7 @@ PLATFORMS
 
 DEPENDENCIES
   bulk_insert
+  business_time
   byebug
   clearance
   coffee-rails (~> 4.2)

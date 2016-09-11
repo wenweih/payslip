@@ -16,7 +16,7 @@ App.Calculate = {
           identifier: 'start',
           rules:  [
             {
-              type: 'empty',
+              type   : 'regExp[/^(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\\d\\d$/]',
               prompt : 'you must select a start time'
             }
           ]

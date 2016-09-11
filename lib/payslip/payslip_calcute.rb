@@ -26,6 +26,10 @@ module Payslip
       (self.gross_income * @super_rate).round(0).to_i
     end
 
+    def pay_period
+     "#{@start_date} - #{@end_date}"
+   end
+
     private
 
     def worked_time

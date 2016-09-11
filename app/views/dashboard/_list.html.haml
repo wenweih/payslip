@@ -1,0 +1,16 @@
+%table.ui.green.table
+  %thead
+    %tr
+      %th Name
+      %th Pay Period
+      %th Gross Income
+      %th Income Tax
+      %th Net Income
+      %th Super
+  %tbody
+    %tr
+      %td #{@user.full_name}
+      %td #{@calculate.pay_period}
+      %td #{@calculate.gross_income}
+      %td #{@calculate.income_tax}
+      %td #{@calculate._super}
